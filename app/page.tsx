@@ -199,7 +199,7 @@ export default function Home() {
           <input type="email" id="email" name="email" placeholder="tu@email.com" />
         </div>
 
-        <button type="submit" disabled={isSubmitting}>
+        <button type="submit" disabled={isSubmitting} className={styles.submitButton}>
           {isSubmitting ? 'Enviando...' : 'Enviar Respuestas ✓'}
         </button>
       </form>
