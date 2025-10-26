@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WellUniversitario - Validación PMV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #764ba2;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .question {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .radio-option:hover,
+        .checkbox-option:hover {
+            background: #f8f9fa;
+            border-color: #764ba2;
+        }
+        .radio-option input,
+        .checkbox-option input {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(118, 75, 162, 0.4);
+        }
+        .success {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        .success h2 {
+            color: #10b981;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 WellUniversitario</h1>
+        <p class="subtitle">Tu compañero de bienestar emocional</p>
+        
+        <form id="surveyForm">
+            <!-- Sección 1: Datos personales -->
+            <div class="question">
+                <label for="nombre">1. ¿Cuál es tu nombre? *</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="question">
+                <label for="edad">2. ¿Cuántos años tienes? *</label>
+                <input type="number" id="edad" name="edad" min="16" max="60" required>
+            </div>
+
+            <div class="question">
+                <label for="universidad">3. ¿En qué universidad estudias? *</label>
+                <input type="text" id="universidad" name="universidad" required>
+            </div>
+
+            <!-- Sección 2: Validación del problema -->
+            <div class="question">
+                <label>4. ¿Con qué frecuencia sientes estrés o ansiedad por temas universitarios? *</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="frecuencia_estres" value="diario" required>
+                        <span>Todos los días</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="frecuencia_estres" value="varias_veces">
+                        <span>Varias veces a la semana</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="frecuencia_estres" value="ocasional">
+                        <span>Ocasionalmente</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="frecuencia_estres" value="rara_vez">
+                        <span>Rara vez</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>5. ¿Has buscado apoyo psicológico o emocional en tu universidad? *</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="busco_apoyo" value="si" required>
+                        <span>Sí</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="busco_apoyo" value="no">
+                        <span>No</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Sección 3: Validación de la solución -->
+            <div class="question">
+                <label>6. ¿Te gustaría usar una app que te acompañe emocionalmente 24/7? *</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="usaria_app" value="definitivamente_si" required>
+                        <span>Definitivamente sí</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="usaria_app" value="probablemente_si">
+                        <span>Probablemente sí</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="usaria_app" value="tal_vez">
+                        <span>Tal vez</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="usaria_app" value="probablemente_no">
+                        <span>Probablemente no</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>7. ¿Qué funciones te parecerían más útiles? (Selecciona todas las que apliquen) *</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="funciones" value="test_estres">
+                        <span>Test rápido de estrés (5 minutos)</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="funciones" value="chat_anonimo">
+                        <span>Chat anónimo con otros estudiantes</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="funciones" value="meditaciones">
+                        <span>Meditaciones guiadas</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="funciones" value="recursos">
+                        <span>Artículos y recursos educativos</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>8. ¿Qué valoras más en una plataforma de bienestar? *</label>
+                <select name="valor_principal" required>
+                    <option value="">Selecciona una opción...</option>
+                    <option value="confidencialidad">Confidencialidad/Anonimato</option>
+                    <option value="rapidez">Rapidez en obtener ayuda</option>
+                    <option value="costo">Costo bajo o gratuito</option>
+                    <option value="comunidad">Comunidad de apoyo</option>
+                    <option value="profesionales">Acceso a profesionales</option>
+                </select>
+            </div>
+
+            <!-- Sección 4: Recomendación -->
+            <div class="question">
+                <label>9. ¿Recomendarías esta app a otros estudiantes? *</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="recomendaria" value="definitivamente_si" required>
+                        <span>Definitivamente sí (67%)</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="recomendaria" value="probablemente_si">
+                        <span>Probablemente sí (23%)</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="recomendaria" value="tal_vez">
+                        <span>Tal vez (10%)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label for="email">10. Si quieres probar la beta, déjanos tu email (opcional)</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com">
+            </div>
+
+            <button type="submit">Enviar Respuestas ✓</button>
+        </form>
+
+        <div class="success" id="successMessage">
+            <h2>¡Gracias por tu tiempo! 🎉</h2>
+            <p>Tus respuestas han sido registradas. Te contactaremos pronto para la beta de WellUniversitario.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aquí normalmente enviarías los datos a un servidor
+            // Por ahora, solo simulamos el envío
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                if (data[key]) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            });
+            
+            console.log('Datos de la encuesta:', data);
+            
+            // Guardar en localStorage para recuperar después
+            const responses = JSON.parse(localStorage.getItem('responses') || '[]');
+            responses.push({
+                ...data,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('responses', JSON.stringify(responses));
+            
+            // Mostrar mensaje de éxito
+            document.querySelector('form').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

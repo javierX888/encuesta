@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.container h1 {
+  color: #764ba2;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2em;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.question {
+  margin-bottom: 25px;
+}
+
+.question label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.05em;
+}
+
+.question input[type='text'],
+.question input[type='email'],
+.question input[type='number'],
+.question select,
+.question textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.question input:focus,
+.question select:focus,
+.question textarea:focus {
+  outline: none;
+  border-color: #764ba2;
+}
+
+.question textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.radioGroup,
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radioOption,
+.checkboxOption {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.radioOption:hover,
+.checkboxOption:hover {
+  background: #f8f9fa;
+  border-color: #764ba2;
+}
+
+.radioOption input,
+.checkboxOption input {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s;
+  margin-top: 20px;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(118, 75, 162, 0.4);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.success {
+  text-align: center;
+  padding: 40px;
+}
+
+.success h2 {
+  color: #10b981;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+  .container h1 {
+    font-size: 1.5em;
+  }
+}
